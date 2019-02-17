@@ -2,6 +2,7 @@
 ## A working example of a line graph drawn with D3 using random data
 
 For reference, check client/data.js
+
 or read here:
 
 ```javascript
