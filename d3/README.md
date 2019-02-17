@@ -1,11 +1,8 @@
-#d3 example
-## A working example of a line graph drawn with D3 using random data
+# A working example of a line graph drawn with D3 using random data
 
 For reference, check client/data.js
 
 or read here:
-
-(sorry it's not the prettiest, threw it together in an afternoon as a proof of concept)
 
 ```javascript
 	const svg = d3.select('svg')
@@ -60,3 +57,5 @@ or read here:
 	.append('g')
 		.attr('transform', `translate(${margin.left}, ${margin.top})`)
 ```
+
+(sorry it's not the prettiest, threw it together in an afternoon as a proof of concept)
