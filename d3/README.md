@@ -1,20 +1,13 @@
-const Utils = {}
+#d3 example
+## A working example of a line graph drawn with D3 using random data
 
+For reference, check client/data.js
 
-Utils.websocket = function(url){
-	return new Promise(function(resolve, reject){
-		const socket = new WebSocket(url)
+or read here:
 
-		socket.onopen = () => resolve(socket)
-		socket.onerror = () => reject(socket)
-	})
-}
+(sorry it's not the prettiest, threw it together in an afternoon as a proof of concept)
 
-window.onload = async function(){
-	// const socket = await Utils.websocket('ws://localhost/subscribe')
-
-	// socket.send('message')
-
+```javascript
 	const svg = d3.select('svg')
 	const element = document.querySelector('.graph-container')
 
@@ -66,4 +59,4 @@ window.onload = async function(){
 	.attr('fill', 'none')
 	.append('g')
 		.attr('transform', `translate(${margin.left}, ${margin.top})`)
-}
+```
