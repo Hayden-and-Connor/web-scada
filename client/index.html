@@ -7,7 +7,10 @@
 	<!-- TODO: Host this locally -->
 	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.2.0/socket.io.js"></script>
 
-	<script type="text/javascript" src="/client/main.js"></script>
+	<script type="text/javascript" src="main.js"></script>
+
+	<link rel="stylesheet" href="client/stylesheets/log.css">
+
 </head>
 <body>
 
@@ -15,6 +18,8 @@
 	<nav class="hidden nav--main">
 		<ul>
 			<li><a href="#state">state</a></li>
+			<li><a href="#log">log</a></li>
+			<li><a href="#graph">graph</a></li>
 
 			<!-- Not sure if we need this or not -->
 			<!-- <li><a href="#graph">graph</a></li> -->
@@ -56,6 +61,21 @@
 			</tr>
 			<!-- <tr> Just some examples </tr> -->
 		</table>
+	</div>
+
+	<div class="window--log">
+		<nav class="nav--log">
+			<ul class="log-nav__verbosity">
+				<li><a href="#log?verbosity=1">Verbose</a></li>
+				<li><a href="#log?verbosity=0">Errors Only</a></li>
+			</ul>
+
+			<button class="btn btn--copy">Copy</button>
+		</nav>
+		<output class="log__main">
+			<p>This will be logging output</p>
+			<p>this will be a second line</p>
+		</output>
 	</div>
 </body>
 </html>
