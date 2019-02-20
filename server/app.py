@@ -4,10 +4,7 @@ from flask import request, send_from_directory
 from flask_socketio import SocketIO
 
 app = Flask(__name__)
-
 socketio = SocketIO(app)
-socketio.run(app)
-
 
 @app.route('/')
 def index():
@@ -21,3 +18,5 @@ def public(path):
 def handle_connect():
 	print('connected')
 
+app.run()
+# socketio.run(app)
