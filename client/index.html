@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Project Kalman</title>
+
+	<!-- import socket.io -->
+	<!-- TODO: Host this locally -->
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.2.0/socket.io.js"></script>
+
+	<script type="text/javascript" src="/client/main.js"></script>
+</head>
+<body>
+
+	<!-- Probably don't need a nav menu for now if there's only one view -->
+	<nav class="hidden nav--main">
+		<ul>
+			<li><a href="#state">state</a></li>
+
+			<!-- Not sure if we need this or not -->
+			<!-- <li><a href="#graph">graph</a></li> -->
+
+			<!-- would be a nice feature I guess -->
+			<!-- <li><a href="#calibrate">calibrate / settings?</a></li> -->
+		</ul>
+	</nav>
+
+	<div class="window--state">
+		<table class="state__list">
+			<tr class="state__element">
+				<td class="state-element__label">Current: </td>
+				<td>
+					<span class="state-element__value">1.8</span>
+					<span class="state-element__unit">A</span>
+				</td>
+			</tr>
+			<tr class="state__element">
+				<td class="state-element__label">Throttle: </td>
+				<td>
+					<span class="state-element__value">50</span>
+					<span class="state-element__unit">%</span>
+				</td>
+			</tr>
+			<tr class="state__element">
+				<td class="state-element__label">Angular Velocity: </td>
+				<td>
+					<span class="state-element__value">200</span>
+					<span class="state-element__unit">RPM</span>
+				</td>
+			</tr>
+			<tr class="state__element">
+				<td class="state-element__label">Temperature: </td>
+				<td>
+					<span class="state-element__value">45</span>
+					<span class="state-element__unit">degrees C</span>
+				</td>
+			</tr>
+			<!-- <tr> Just some examples </tr> -->
+		</table>
+	</div>
+</body>
+</html>
