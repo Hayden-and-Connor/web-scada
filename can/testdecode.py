@@ -36,7 +36,7 @@ class MotorController(can.Listener):
 			self.bus.send(PDO1)
 		# Add more CANopen responses here
 
-mc = MotorController()
+mc = MotorController(mc_bus)
 notifier = can.Notifier(mc_bus, [mc])		
 
 sync = can.Message(arbitration_id=0x80, data=0x00)
