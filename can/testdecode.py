@@ -38,7 +38,7 @@ class MotorController(can.Listener):
 
 mc = MotorController()			
 
-sync = can.Message(arbitration_id=0x80, data[0x00])
+sync = can.Message(arbitration_id=0x80, data=0x00)
 sync_bus.send_periodic(sync, 0.1)
 
 for msg in scada_bus:
