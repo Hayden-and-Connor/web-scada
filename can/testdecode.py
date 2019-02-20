@@ -31,7 +31,8 @@ class MotorController(can.Listener):
 
     def on_message_received(self, msg):
         print("MC msg rx")
-        if msg.arbitration_id == 0x80 and msg.data == 0x00:
+        if msg.arbitration_id == 0x80:
+            print("sycn rx")
             #TODO add more PDOs
             #TODO add feature to count syncs before sending PDO
             self.bus.send(PDO1)
@@ -41,7 +42,7 @@ mc = MotorController(mc_bus)
 notifier = can.Notifier(mc_bus, [mc])       
 
 sync = can.Message(arbitration_id=0x80, data=0x00)
-sync_bus.send_periodic(sync, 1)
+sync_bus.send_periodic(sync, 0.07)
 
 for msg in scada_bus:
     print(msg)
