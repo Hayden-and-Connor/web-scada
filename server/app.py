@@ -11,16 +11,11 @@ socketio.run(app)
 
 @app.route('/')
 def index():
-	return send_from_directory('client', 'index.html')
+	return send_from_directory('../client', 'index.html')
 
 @app.route('/client/<path:path>')
 def public(path):
-	return send_from_directory('client', path)
-
-@app.route('/another')
-def another():
-	socketio.emit('another', {'data': 42})
-	return 'test'
+	return send_from_directory('../client', path)
 
 @socketio.on('connect')
 def handle_connect():
