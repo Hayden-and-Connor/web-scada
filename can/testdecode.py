@@ -36,11 +36,12 @@ class MotorController(can.Listener):
 			self.send(PDO1)
 		# Add more CANopen responses here
 
-mc = MotorController()			
+mc = MotorController()
+notifier = can.Notifier(mc_bus, [mc])		
 
 sync = can.Message(arbitration_id=0x80, data=0x00)
 sync_bus.send_periodic(sync, 0.1)
 
 for msg in scada_bus:
-	print(msg.string)
+	print(msg)
 
