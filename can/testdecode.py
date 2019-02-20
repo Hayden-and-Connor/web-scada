@@ -17,7 +17,7 @@ sync_bus = 	can.interface.Bus('test', bustype='virtual')
 
 
 # make Listener subclass that looks for sync signal and responds with PDO1
-PDO1 = can.Message(arbitration_id=0x181, data=[0xFEDCBA9876543210])
+PDO1 = can.Message(arbitration_id=0x181, data=[0xFE, 0xDC, 0xBA, 0x98, 0x76, 0x54, 0x32, 0x10])
 
 class MotorController(can.Listener):
 	"""
