@@ -15,6 +15,9 @@ socketio = SocketIO(app)
 app.use_reloader = False
 app.debug = False
 
+# Lets flask be externally visible
+app.host = '0.0.0.0'
+
 @app.route('/')
 def index():
 	return send_from_directory('../client', 'index.html')
@@ -30,7 +33,7 @@ def handle_connect():
 @socketio.on('request')
 def handle_request():
 	print('data requested')
-	socketio.emit('data', { 'Current': { 'value': 10, 'unit': 'A' }, 'key2': 200 })
+	socketio.emit('data', { 'Current': { 'value': 10, 'unit': 'A' }})
 
 
 from pyee import EventEmitter
@@ -44,7 +47,12 @@ ee = EventEmitter()
 
 @ee.on('data')
 def handle_data():
-    socketio.emit('data', {'test': 'test'})
+    socketio.emit('data', {
+        'Temperature': {
+            'value': 45,
+            'units': 'deg C'
+        }
+    })
 
 @ee.on('event')
 def event_handler():
@@ -101,7 +109,8 @@ async def mock_data():
         await asyncio.sleep(1)
 
 if __name__ == "__main__":
-    threading.Thread(target=socketio.run, args=[app]).start()
+    # Threaded = true????
+    threading.Thread(target=socketio.run, args=[app, "0.0.0.0"]).start()
     # ee.emit('data_new', 'mysensor', '10', '5.02')
     asyncio.run(mock_data())
 
