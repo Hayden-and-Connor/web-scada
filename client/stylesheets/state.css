@@ -46,7 +46,7 @@ table {
 }
 
 .state__element {
-	padding: 3rem;
+	/*padding: 3rem;*/
 }
 
 .state-element__label {
@@ -54,7 +54,7 @@ table {
 }
 
 .state-element__value {
-	padding: 3px;
+	/*padding: 3px;*/
 }
 
 .window--log {
@@ -76,6 +76,9 @@ table {
 	border: 1px solid black;
 
 	padding: 1rem;
+
+	overflow-y: scroll;
+
 }
 
 .log__main p {

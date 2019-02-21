@@ -42,13 +42,21 @@ Table.update_row = function(label, value){
 }
 
 Table.update_log = function(log){
-	const target = Utils.DomQuery('.log__main')
+	const target = Utils.DomQuery('.log__main')[0]
 
 	const new_log = DomTemplates.render(`
 		<p>${log}</p>
 	`.trim())
 
 	target.appendChild(new_log)
+}
+
+var scrolled = false;
+function updateScroll(){
+    if(!scrolled){
+        var element = Utils.DomQuery('.log__container')[0]
+        element.scrollTop = element.scrollHeight;
+    }
 }
 
 socket.on('data', function(data){
@@ -68,4 +76,6 @@ socket.on('data', function(data){
 
 		// const target = Utils.DomQuery('.state__list')[0]
 	}
+
+	updateScroll()
 })
