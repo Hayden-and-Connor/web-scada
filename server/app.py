@@ -23,7 +23,16 @@ def handle_connect():
 @socketio.on('request')
 def handle_request():
 	print('data requested')
-	socketio.emit('data', { 'Current': { 'value': 10, 'unit': 'A' }, 'key2': 200 })
+	socketio.emit('data', { 
+		'current': {
+			'value': 10,
+			'unit': 'A' 
+		}, 
+		'temperature': {
+			'value': 45,
+			'unit': 'deg C'
+		}
+	})
 
 app.run()
 socketio.run(app)

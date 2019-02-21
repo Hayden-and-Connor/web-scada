@@ -5,8 +5,15 @@ from flask_socketio import SocketIO
 
 import asyncio
 
+import threading
+
 app = Flask(__name__)
 socketio = SocketIO(app)
+
+# Disabling these settings lets us run flask in
+# a separate thread
+app.use_reloader = False
+app.debug = False
 
 @app.route('/')
 def index():
@@ -25,21 +32,19 @@ def handle_request():
 	print('data requested')
 	socketio.emit('data', { 'Current': { 'value': 10, 'unit': 'A' }, 'key2': 200 })
 
-app.use_reloader = False
-app.debug = False
-
-async def start_server():
-    socketio.run(app)
-
-# app.run()
-# socketio.run(app)
 
 from pyee import EventEmitter
 
 import sqlite3
 from sqlite3 import Error
 
+import time
+
 ee = EventEmitter()
+
+@ee.on('data')
+def handle_data():
+    socketio.emit('data', {'test': 'test'})
 
 @ee.on('event')
 def event_handler():
@@ -89,6 +94,14 @@ async def mock_can():
 
 import threading
 
+async def mock_data():
+    
+    while True:
+        ee.emit('data')
+        await asyncio.sleep(1)
+
 if __name__ == "__main__":
-    threading.Thread(target=socketio.).start()
-    ee.emit('data_new', 'mysensor', '10', '5.02')
+    threading.Thread(target=socketio.run, args=[app]).start()
+    # ee.emit('data_new', 'mysensor', '10', '5.02')
+    asyncio.run(mock_data())
+
