@@ -5,33 +5,38 @@ from flask_socketio import SocketIO
 
 import asyncio
 
-app = Flask(__name__)
-socketio = SocketIO(app)
+import threading
 
-@app.route('/')
-def index():
-	return send_from_directory('../client', 'index.html')
+def server_start():
+	app = Flask(__name__)
+	socketio = SocketIO(app)
 
-@app.route('/client/<path:path>')
-def public(path):
-	return send_from_directory('../client', path)
+	@app.route('/')
+	def index():
+		return send_from_directory('../client', 'index.html')
 
-@socketio.on('connect')
-def handle_connect():
-	print('connected')
+	@app.route('/client/<path:path>')
+	def public(path):
+		return send_from_directory('../client', path)
 
-@socketio.on('request')
-def handle_request():
-	print('data requested')
-	socketio.emit('data', { 'Current': { 'value': 10, 'unit': 'A' }, 'key2': 200 })
+	@socketio.on('connect')
+	def handle_connect():
+		print('connected')
 
-app.run()
-socketio.run(app)
+	@socketio.on('request')
+	def handle_request():
+		print('data requested')
+		socketio.emit('data', { 'Current': { 'value': 10, 'unit': 'A' }, 'key2': 200 })
+
+	app.run()
+	socketio.run(app)
 
 from pyee import EventEmitter
 
 import sqlite3
 from sqlite3 import Error
+
+import time
 
 ee = EventEmitter()
 
@@ -76,4 +81,10 @@ def create_data(conn, data):
     cur.execute(sql, data)
     return cur.lastrowid
 
-ee.emit('data_new', 'mysensor', '10', '5.02')
+
+t = threading.Thread(target=server_start)
+t.start
+
+while true:
+	time.sleep(2)
+	ee.emit('data_new', 'mysensor', '10', '5.02')
