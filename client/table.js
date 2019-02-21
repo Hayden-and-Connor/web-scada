@@ -11,39 +11,33 @@ DomTemplates.render = function(html) {
 	return template.content
 }
 
-Table.DomTemplates.row = function({label, value, unit}){
+Table.DomTemplates.row = function({label, value}){
 	const template = `
 		<tr class="state__element row--${label}">
 			<td class="state-element__label">${label}: </td>
-			<td>
-				<span class="state-element__value">${value}</span>
-				<span class="state-element__unit">${unit}</span>
-			</td>
+			<td class="state-element__value">${value} </td>
 		</tr>`
 
 	return DomTemplates.render(template)
 }
 
-Table.append_row = function(label, data){
+Table.append_row = function(label, value){
 	const target = Utils.DomQuery('.state__list')[0]
-	target.appendChild(Table.DomTemplates.row({label, ...data}))
+	target.appendChild(Table.DomTemplates.row({label, value}))
 }
 
-Table.update_row = function(label, data){
+Table.update_row = function(label, value){
 
 	// get all the rows with this key in the table
-	const current_rows = Utils.DomQuery(`.state__element.element--${label}`)
-
-	console.log(current_rows)
+	const current_rows = Utils.DomQuery(`.state__element.row--${label}`)
 
 	if(current_rows.length == 0) {
-		Table.append_row(label, data)
+		Table.append_row(label, value)
 	} else {
 		const row = current_rows[0]
 
 		row.querySelector('.state-element__label').innerHTML = `${label}: `
-		row.querySelector('.state-element__value').innerHTML = `${data.value}`
-
+		row.querySelector('.state-element__value').innerHTML = `${value}`
 	}
 }
 
@@ -53,9 +47,9 @@ socket.on('data', function(data){
 	for(const label in data) {
 		const { value, unit } = data[label]
 
-		console.log({label, value, unit})
+		console.log({label, value})
 
-		Table.update_row(label, {value, unit})
+		Table.update_row(label, value)
 
 		// make new table row and append it to table
 		// const row = Table.DomTemplates.row({label, value, unit})
