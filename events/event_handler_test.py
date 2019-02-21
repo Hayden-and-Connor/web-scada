@@ -70,7 +70,7 @@ def create_data(conn, data):
     :param project:
     :return: project id
     """
-    sql = ''' INSERT INTO data(name,val,ts)
+    sql = ''' INSERT INTO data(name, value, timestamp)
               VALUES(?,?,?) '''
     cur = conn.cursor()
     cur.execute(sql, data)
