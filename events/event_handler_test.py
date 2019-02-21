@@ -46,10 +46,10 @@ import time
 ee = EventEmitter()
 
 @ee.on('data')
-def handle_data():
+def handle_data(temp):
     socketio.emit('data', {
         'Temperature': {
-            'value': 45,
+            'value': temp,
             'units': 'deg C'
         }
     })
@@ -104,9 +104,12 @@ import threading
 
 async def mock_data():
     
+    temp = 3
+
     while True:
-        ee.emit('data')
+        ee.emit('data', temp)
         await asyncio.sleep(1)
+        temp += 1
 
 if __name__ == "__main__":
     # Threaded = true????
