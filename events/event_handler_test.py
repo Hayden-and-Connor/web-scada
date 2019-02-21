@@ -76,3 +76,4 @@ def create_data(conn, data):
     cur.execute(sql, data)
     return cur.lastrowid
 
+ee.emit('data_new', 'mysensor', '10', '5.02')
