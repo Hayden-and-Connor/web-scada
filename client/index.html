@@ -7,9 +7,12 @@
 	<!-- TODO: Host this locally -->
 	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.2.0/socket.io.js"></script>
 
+	<!-- <script type="text/javascript" src="https://unpkg.com/eventemitter3@latest/umd/eventemitter3.min.js"></script> -->
+
 	<script type="text/javascript" src="client/utils.js"></script>
 	<script type="text/javascript" src="client/listener.js"></script>
-	<script type="text/javascript" src="client/main.js"></script>
+	<script type="text/javascript" src="client/table.js"></script>
+	<!-- <script type="text/javascript" src="client/main.js"></script> -->
 
 	<link rel="stylesheet" href="client/stylesheets/log.css">
 
@@ -33,14 +36,14 @@
 
 	<div class="window--state">
 		<table class="state__list">
-			<tr class="state__element">
+			<tr class="state__element element--current">
 				<td class="state-element__label">Current: </td>
 				<td>
 					<span class="state-element__value">1.8</span>
 					<span class="state-element__unit">A</span>
 				</td>
 			</tr>
-			<tr class="state__element">
+<!-- 			<tr class="state__element">
 				<td class="state-element__label">Throttle: </td>
 				<td>
 					<span class="state-element__value">50</span>
@@ -60,7 +63,7 @@
 					<span class="state-element__value">45</span>
 					<span class="state-element__unit">degrees C</span>
 				</td>
-			</tr>
+			</tr> -->
 			<!-- <tr> Just some examples </tr> -->
 		</table>
 	</div>
@@ -74,6 +77,8 @@
 
 			<button class="btn btn--copy">Copy</button>
 			<button class="btn btn--download">Download</button>
+
+			<button class="btn btn--request" onclick="">Request Data</button>
 		</nav>
 		<output class="log__main">
 			<p>This will be logging output</p>

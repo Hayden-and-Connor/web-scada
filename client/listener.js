@@ -1,12 +1,18 @@
-const connect = async function(){
+const socket = io()
 
-	const socket = await Utils.connect()
-
-	socket.on('data', function(data){
-		console.log(data)
-	})
-
+socket.on('connect', function(){
 	socket.emit('request')
-}
+})
 
-window.onload = () => connect()
+// const connect = async function(){
+
+// 	const socket = await Utils.connect()
+
+// 	socket.on('data', function(data){
+// 		console.log(data)
+// 	})
+
+// 	socket.emit('request')
+// }
+
+// window.onload = () => connect()
