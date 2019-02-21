@@ -39,11 +39,11 @@ ee = EventEmitter()
 def event_handler():
 	print('BANG BANG')
 
-@ee.on('data_new'):
+@ee.on('data_new')
 def broadcast_data(name, val, ts):
 	socketio.emit('data_new', {'name': name, 'val': val, 'ts': ts})
 
-@ee.on('data_new'):
+@ee.on('data_new')
 def save_data(name, val, ts):
 	conn = create_connection("mydata.db")
 	with conn:
