@@ -25,8 +25,14 @@ def handle_request():
 	print('data requested')
 	socketio.emit('data', { 'Current': { 'value': 10, 'unit': 'A' }, 'key2': 200 })
 
-app.run()
-socketio.run(app)
+app.use_reloader = False
+app.debug = False
+
+async def start_server():
+    socketio.run(app)
+
+# app.run()
+# socketio.run(app)
 
 from pyee import EventEmitter
 
@@ -76,4 +82,13 @@ def create_data(conn, data):
     cur.execute(sql, data)
     return cur.lastrowid
 
-ee.emit('data_new', 'mysensor', '10', '5.02')
+async def mock_can():
+    while True:
+        await asyncio.sleep(1)
+        ee.emit('data_new', 'mysensor', '10', '5.02')
+
+import threading
+
+if __name__ == "__main__":
+    threading.Thread(target=socketio.).start()
+    ee.emit('data_new', 'mysensor', '10', '5.02')
