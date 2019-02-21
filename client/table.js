@@ -41,6 +41,16 @@ Table.update_row = function(label, value){
 	}
 }
 
+Table.update_log = function(log){
+	const target = Utils.DomQuery('.log__main')
+
+	const new_log = DomTemplates.render(`
+		<p>${log}</p>
+	`.trim())
+
+	target.appendChild(new_log)
+}
+
 socket.on('data', function(data){
 	console.log(data)
 
@@ -50,6 +60,8 @@ socket.on('data', function(data){
 		console.log({label, value})
 
 		Table.update_row(label, value)
+
+		Table.update_log(`new data: ${label}: ${value}`)
 
 		// make new table row and append it to table
 		// const row = Table.DomTemplates.row({label, value, unit})

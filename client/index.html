@@ -15,6 +15,7 @@
 	<!-- <script type="text/javascript" src="client/main.js"></script> -->
 
 	<link rel="stylesheet" href="client/stylesheets/log.css">
+	<link rel="stylesheet" href="client/stylesheets/state.css">
 
 </head>
 <body>
@@ -34,57 +35,62 @@
 		</ul>
 	</nav>
 
-	<div class="window--state">
-		<table class="state__list">
-			<!-- <tr class="state__element element--current"> -->
-				<!-- <td class="state-element__label">Current: </td> -->
-				<!-- <td> -->
-					<!-- <span class="state-element__value">1.8</span> -->
-					<!-- <span class="state-element__unit">A</span> -->
-				<!-- </td> -->
-			<!-- </tr> -->
-			
-<!-- 			<tr class="state__element">
-				<td class="state-element__label">Throttle: </td>
-				<td>
-					<span class="state-element__value">50</span>
-					<span class="state-element__unit">%</span>
-				</td>
-			</tr>
-			<tr class="state__element">
-				<td class="state-element__label">Angular Velocity: </td>
-				<td>
-					<span class="state-element__value">200</span>
-					<span class="state-element__unit">RPM</span>
-				</td>
-			</tr>
-			<tr class="state__element">
-				<td class="state-element__label">Temperature: </td>
-				<td>
-					<span class="state-element__value">45</span>
-					<span class="state-element__unit">degrees C</span>
-				</td>
-			</tr> -->
-			<!-- <tr> Just some examples </tr> -->
-		</table>
+	<div class="window--main">
+		<div class="window--state">
+			<table class="state__list">
+				<!-- <tr class="state__element element--current"> -->
+					<!-- <td class="state-element__label">Current: </td> -->
+					<!-- <td> -->
+						<!-- <span class="state-element__value">1.8</span> -->
+						<!-- <span class="state-element__unit">A</span> -->
+					<!-- </td> -->
+				<!-- </tr> -->
+				
+	<!-- 			<tr class="state__element">
+					<td class="state-element__label">Throttle: </td>
+					<td>
+						<span class="state-element__value">50</span>
+						<span class="state-element__unit">%</span>
+					</td>
+				</tr>
+				<tr class="state__element">
+					<td class="state-element__label">Angular Velocity: </td>
+					<td>
+						<span class="state-element__value">200</span>
+						<span class="state-element__unit">RPM</span>
+					</td>
+				</tr>
+				<tr class="state__element">
+					<td class="state-element__label">Temperature: </td>
+					<td>
+						<span class="state-element__value">45</span>
+						<span class="state-element__unit">degrees C</span>
+					</td>
+				</tr> -->
+				<!-- <tr> Just some examples </tr> -->
+			</table>
+		</div>
+
+		<div class="window--log">
+			<nav class="nav--log">
+				<ul class="log-nav__verbosity">
+					<li><a href="#log?verbosity=1">Verbose</a></li>
+					<li><a href="#log?verbosity=0">Errors Only</a></li>
+				</ul>
+
+				<button class="btn btn--copy">Copy</button>
+				<button class="btn btn--download">Download</button>
+
+				<button class="btn btn--request" onclick="">Request Data</button>
+			</nav>
+			<div class="log__container">
+				<output class="log__main">
+					<p>This will be logging output</p>
+					<p>this will be a second line</p>
+				</output>
+			</div>
+		</div>
 	</div>
-
-	<div class="window--log">
-		<nav class="nav--log">
-			<ul class="log-nav__verbosity">
-				<li><a href="#log?verbosity=1">Verbose</a></li>
-				<li><a href="#log?verbosity=0">Errors Only</a></li>
-			</ul>
-
-			<button class="btn btn--copy">Copy</button>
-			<button class="btn btn--download">Download</button>
-
-			<button class="btn btn--request" onclick="">Request Data</button>
-		</nav>
-		<output class="log__main">
-			<p>This will be logging output</p>
-			<p>this will be a second line</p>
-		</output>
-	</div>
+	
 </body>
 </html>
