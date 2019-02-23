@@ -7,7 +7,7 @@ async def start(event_emitter, bitrate=125000):
     bus = can.interface.Bus(bustype='socketcan', channel='can0', bitrate=bitrate)
     print("canbus opened")
     for msg in bus:
-        print(msg)
+        # print(msg)
         # decode message
         # return list of new data
         # for each new data create new data event
