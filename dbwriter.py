@@ -7,9 +7,9 @@ def setup(dbfile, event_emitter):
     # check that db exists if not create one
     conn = create_connection(dbfile)
     with conn:
-    	create_tables(conn)
+        create_tables(conn)
     conn.close()
-    
+
     @event_emitter.on('data_new')
     def save_data(name, val, ts):
         print(val)
@@ -35,7 +35,7 @@ def create_connection(db_file):
         conn.close()
 
 def create_tables(conn):
-	sql_data_table = """ CREATE TABLE IF NOT EXISTS data (
+    sql_data_table = """ CREATE TABLE IF NOT EXISTS data (
                                         rowid integer PRIMARY KEY,
                                         name text NOT NULL,
                                         value text NOT NULL
