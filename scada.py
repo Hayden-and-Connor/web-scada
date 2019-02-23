@@ -6,7 +6,7 @@ import dbwriter
 
 ee = EventEmitter()
 
-ee.on('data_new')(dbwriter.write_data)
+dbwriter.setup("mydb.db", ee, 'data_new')
 
 if __name__ == "__main__":
     asyncio.run(canreader.start(ee, 125000))
