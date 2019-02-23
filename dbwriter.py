@@ -10,6 +10,6 @@ def setup(dbfile, event_emitter, event_type):
     @event_emitter.on(event_type)
     def save_data(name, val, ts):
         print(val)
-        conn = create_connection(dbfile)
-        with conn:
-            create_data(conn, (name, val, ts))
+        # conn = create_connection(dbfile)
+        # with conn:
+        #     create_data(conn, (name, val, ts))
