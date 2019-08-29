@@ -2,5 +2,5 @@
 
 ## Installation
 ```
-  pip install socket-can
+  pip install python-can
 ```
